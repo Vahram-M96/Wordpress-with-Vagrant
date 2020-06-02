@@ -15,7 +15,9 @@ This project is an example how to set up Wordpress using virtual machines, and V
 
 >### Pre requirepmants 
 >You should have pre installed Vagrant and Virtualbox.  
->   >Helpful links how to install this components  
+>  
+>  
+>Helpful links how to install this components  
 >   * [Virtualbox](https://www.virtualbox.org/wiki/Downloads)  
 >   * [Vagrant](https://www.vagrantup.com/docs/installation)  
 
@@ -23,21 +25,16 @@ This project is an example how to set up Wordpress using virtual machines, and V
   > _Please note that all files in your working directory  will be presented under /vagrant directory inside your virtual machine_ 
 2. Open terminal and go to your working directory 
 3. Execute **vagrant up** command 
-4. Brouse your localhost on port 8080.
+4. Brouse the ip address 192.18.4.5 that used for this example.
 
 ## Notes
-In this example, we have an access Wordpress via our local host's 8080 ports. If it is not preferred way for you, then you can make changes in Vagrant file, in order to access wordpres on another port of your localhost, or you can specify the IP address for your virtual machine.
- * if you want to change the port, then you need to change the value in this line for **host**: 
-  ```sh  
-         config.vm.network "forwarded_port", guest: 80, host: 8080   
-  ```  
- * If you want to give an IP address to your virtual machine, then you need to:
-    
- 1. In Vagrantfile comment (#) the line mentioned below
-    ```sh
-      config.vm.network "forwarded_port", guest: 80, host: 8080
-      ```
- 2. uncoment the line mentioned below and give the _ip address_:  
+In this example, we have an access to  Wordpress via  ip address 192.168.4.5. If it is not preferred way for you, then you can make changes in Vagrant file, in order to access wordpres on another ip address.
+ * if you want to change the ip address, then you need to change the value in line mentioned below :  
     ```sh 
-      #config.vm.network "private_network", ip: "ip address"
+      config.vm.network "private_network", ip: "192.168.4.5"
     ```
+ * Also you can acces wordpress by using port forwarding.For tat in Vagrantfile  you need to uncomment the line below, and cooment the the previous line .
+   ```sh 
+     # vgwordpress.vm.network "forwarded_port", guest: 80, host: 8080  
+    ```
+    and your wordpress will be accesable on your localhosts 8080 port.
